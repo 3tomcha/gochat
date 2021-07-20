@@ -4,10 +4,6 @@ import (
 	"github.com/gorilla/websocket"
 )
 
-type room struct {
-	forward chan []byte
-}
-
 type client struct {
 	socket *websocket.Conn
 	send   chan []byte
