@@ -1,12 +1,10 @@
 package main
 
 import (
-	"chat/trace"
 	"flag"
 	"html/template"
 	"log"
 	"net/http"
-	"os"
 	"path/filepath"
 	"sync"
 )
@@ -28,7 +26,6 @@ func main() {
 	var addr = flag.String("addr", ":8080", "アプリケーションのアドレス")
 	flag.Parse()
 	r := newRoom()
-	r.tracer = trace.New(os.Stdout)
 	http.Handle("/", &templateHandler{filename: "chat.html"})
 	http.Handle("/room", r)
 
